@@ -5,28 +5,28 @@
             <table class="table table-striped table-bordered text-center">
                 <thead>
                     <tr>
-                        <th>Fecha</th>
-                        <th>Meta</th>
-                        <th>Nivel</th>
                         <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Nivel</th>
                         <th>Proceso</th>
-                        <th>Responsable</th>
                         <th>Valor</th>
+                        <th>Meta</th>
                         <th>Variación</th>
+                        <th>Responsable</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @for(indicator of indicators(); track indicator.nombre){
                     <tr>
-                        <td>{{ indicator.fecha }}</td>
-                        <td>{{ indicator.meta }}%</td>
-                        <td>{{ indicator.nivel }}</td>
                         <td>{{ indicator.nombre }}</td>
+                        <td>{{ indicator.fecha }}</td>
+                        <td>{{ indicator.nivel }}</td>
                         <td>{{ indicator.proceso }}</td>
-                        <td>{{ indicator.responsable }}</td>
                         <td>{{ indicator.valor }}%</td>
+                        <td>{{ indicator.meta }}%</td>
                         <td>{{ indicator.variacion }}%</td>
+                        <td>{{ indicator.responsable }}</td>        
                         <td>
                             <button class="btn btn-warning btn-sm me-2" (click)="editIndicator(indicator.id)"><i
                                     class="bi bi-pencil"></i></button>
