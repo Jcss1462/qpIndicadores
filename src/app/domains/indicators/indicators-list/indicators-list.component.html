@@ -19,13 +19,13 @@
                     @for(indicator of indicators(); track indicator.nombre){
                     <tr>
                         <td>{{ indicator.fecha }}</td>
-                        <td>{{ indicator.meta }}</td>
+                        <td>{{ indicator.meta }}%</td>
                         <td>{{ indicator.nivel }}</td>
                         <td>{{ indicator.nombre }}</td>
                         <td>{{ indicator.proceso }}</td>
                         <td>{{ indicator.responsable }}</td>
-                        <td>{{ indicator.valor }}</td>
-                        <td>{{ indicator.variacion }}</td>
+                        <td>{{ indicator.valor }}%</td>
+                        <td>{{ indicator.variacion }}%</td>
                         <td>
                             <button class="btn btn-warning btn-sm me-2" (click)="editIndicator(indicator.id)"><i class="bi bi-pencil"></i></button>
                             <button class="btn btn-danger btn-sm" (click)="deleteIndicator(indicator.id)"><i class="bi bi-trash3"></i></button>
