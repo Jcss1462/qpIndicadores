@@ -27,3 +27,10 @@
   
   }
   
+  #emptyBox{
+    width: 100%;
+    font-size: 1.5rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
