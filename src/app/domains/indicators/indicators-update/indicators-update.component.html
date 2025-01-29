@@ -4,6 +4,21 @@
         <form [formGroup]="indicatorForm" (ngSubmit)="onSubmit()">
 
             <div class="row">
+
+                <!-- Nombre -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" formControlName="nombre" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('nombre')!.invalid && indicatorForm.get('nombre')!.touched" />
+                        @if (indicatorForm.get('nombre')!.invalid && indicatorForm.get('nombre')!.touched) {
+                        <div class="invalid-feedback">
+                            Este campo es obligatorio.
+                        </div>
+                        }
+                    </div>
+                </div>
+
                 <!-- Fecha -->
                 <div class="item col-md-6">
                     <div class="form-group">
@@ -13,20 +28,6 @@
                         @if (indicatorForm.get('fecha')!.invalid && indicatorForm.get('fecha')!.touched) {
                         <div class="invalid-feedback">
                             Este campo es obligatorio.
-                        </div>
-                        }
-                    </div>
-                </div>
-
-                <!-- Meta -->
-                <div class="item col-md-6">
-                    <div class="form-group">
-                        <label for="meta">Meta (%)</label>
-                        <input type="number" id="meta" formControlName="meta" class="form-control"
-                            [class.is-invalid]="indicatorForm.get('meta')!.invalid && indicatorForm.get('meta')!.touched" />
-                        @if (indicatorForm.get('meta')!.invalid && indicatorForm.get('meta')!.touched) {
-                        <div class="invalid-feedback">
-                            La meta es obligatoria y debe ser un número positivo.
                         </div>
                         }
                     </div>
@@ -43,20 +44,6 @@
                             <option value="2">2</option>
                         </select>
                         @if (indicatorForm.get('nivel')!.invalid && indicatorForm.get('nivel')!.touched) {
-                        <div class="invalid-feedback">
-                            Este campo es obligatorio.
-                        </div>
-                        }
-                    </div>
-                </div>
-
-                <!-- Nombre -->
-                <div class="item col-md-6">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" formControlName="nombre" class="form-control"
-                            [class.is-invalid]="indicatorForm.get('nombre')!.invalid && indicatorForm.get('nombre')!.touched" />
-                        @if (indicatorForm.get('nombre')!.invalid && indicatorForm.get('nombre')!.touched) {
                         <div class="invalid-feedback">
                             Este campo es obligatorio.
                         </div>
@@ -82,8 +69,55 @@
                     </div>
                 </div>
 
+
+                <!-- Valor -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="valor">Valor (%)</label>
+                        <input type="number" id="valor" formControlName="valor" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('valor')!.invalid && indicatorForm.get('valor')!.touched" />
+                        @if (indicatorForm.get('valor')!.invalid && indicatorForm.get('valor')!.touched) {
+                        <div class="invalid-feedback">
+                            El valor es obligatorio y debe ser un número positivo.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Meta -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="meta">Meta (%)</label>
+                        <input type="number" id="meta" formControlName="meta" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('meta')!.invalid && indicatorForm.get('meta')!.touched" />
+                        @if (indicatorForm.get('meta')!.invalid && indicatorForm.get('meta')!.touched) {
+                        <div class="invalid-feedback">
+                            La meta es obligatoria y debe ser un número positivo.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+
+
+                <!-- Variación -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="variacion">Variación (%)</label>
+                        <input type="number" id="variacion" formControlName="variacion" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('variacion')!.invalid && indicatorForm.get('variacion')!.touched" />
+                        @if (indicatorForm.get('variacion')!.invalid && indicatorForm.get('variacion')!.touched) {
+                        <div class="invalid-feedback">
+                            La variación es obligatoria y debe ser un número positivo.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+
+
                 <!-- Responsable -->
-                <div class="col-md-6">
+                <div class="item col-md-6">
                     <div class="form-group">
                         <label for="responsable">Responsable</label>
                         <select id="responsable" formControlName="responsable" class="form-control"
@@ -100,33 +134,9 @@
                     </div>
                 </div>
 
-                <!-- Valor -->
-                <div class="item col-md-6">
-                    <div class="form-group">
-                        <label for="valor">Valor (%)</label>
-                        <input type="number" id="valor" formControlName="valor" class="form-control"
-                            [class.is-invalid]="indicatorForm.get('valor')!.invalid && indicatorForm.get('valor')!.touched" />
-                        @if (indicatorForm.get('valor')!.invalid && indicatorForm.get('valor')!.touched) {
-                        <div class="invalid-feedback">
-                            El valor es obligatorio y debe ser un número positivo.
-                        </div>
-                        }
-                    </div>
-                </div>
 
-                <!-- Variación -->
-                <div class="item col-md-6">
-                    <div class="form-group">
-                        <label for="variacion">Variación (%)</label>
-                        <input type="number" id="variacion" formControlName="variacion" class="form-control"
-                            [class.is-invalid]="indicatorForm.get('variacion')!.invalid && indicatorForm.get('variacion')!.touched" />
-                        @if (indicatorForm.get('variacion')!.invalid && indicatorForm.get('variacion')!.touched) {
-                        <div class="invalid-feedback">
-                            La variación es obligatoria y debe ser un número positivo.
-                        </div>
-                        }
-                    </div>
-                </div>
+
+
             </div>
 
             <!-- Botón de envío -->
