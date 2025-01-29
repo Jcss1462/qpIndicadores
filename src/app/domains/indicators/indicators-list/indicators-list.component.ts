@@ -3,6 +3,7 @@ import { Indicators } from '../../shared/models/indicators.model';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { IndicatorsService } from '../../shared/services/indicators.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-indicators-list',
@@ -17,7 +18,7 @@ export class IndicatorsListComponent {
   private spinnerService = inject(SpinnerService);
   private indicatorsService = inject(IndicatorsService);
 
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
     // Datos de ejemplo (puedes reemplazarlos con datos de Firestore u otro origen)
@@ -39,9 +40,8 @@ export class IndicatorsListComponent {
   }
 
   // Función para editar un indicador
-  editIndicator(indicator: string) {
-    console.log('Editando indicador:', indicator);
-    // Aquí puedes abrir un formulario para editar el indicador
+  editIndicator(id: string) {
+    this.router.navigate(['/updateIndicator', id]);
   }
 
   // Función para eliminar un indicador

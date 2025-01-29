@@ -1,0 +1,140 @@
+<div class="container d-flex justify-content-center">
+    <div class="col-md-8 col-lg-6 p-4 rounded shadow-sm bg-white" style="padding: 30px;">
+        <h2 class="text-center mb-4"><b>Editar Indicador</b></h2>
+        <form [formGroup]="indicatorForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+                <!-- Fecha -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha" formControlName="fecha" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('fecha')!.invalid && indicatorForm.get('fecha')!.touched" />
+                        @if (indicatorForm.get('fecha')!.invalid && indicatorForm.get('fecha')!.touched) {
+                        <div class="invalid-feedback">
+                            Este campo es obligatorio.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Meta -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="meta">Meta (%)</label>
+                        <input type="number" id="meta" formControlName="meta" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('meta')!.invalid && indicatorForm.get('meta')!.touched" />
+                        @if (indicatorForm.get('meta')!.invalid && indicatorForm.get('meta')!.touched) {
+                        <div class="invalid-feedback">
+                            La meta es obligatoria y debe ser un número positivo.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Nivel -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nivel">Nivel</label>
+                        <select id="nivel" formControlName="nivel" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('nivel')!.invalid && indicatorForm.get('nivel')!.touched">
+                            <option value="">Seleccione un nivel</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        @if (indicatorForm.get('nivel')!.invalid && indicatorForm.get('nivel')!.touched) {
+                        <div class="invalid-feedback">
+                            Este campo es obligatorio.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Nombre -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" formControlName="nombre" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('nombre')!.invalid && indicatorForm.get('nombre')!.touched" />
+                        @if (indicatorForm.get('nombre')!.invalid && indicatorForm.get('nombre')!.touched) {
+                        <div class="invalid-feedback">
+                            Este campo es obligatorio.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Proceso -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="proceso">Proceso</label>
+                        <select id="proceso" formControlName="proceso" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('proceso')!.invalid && indicatorForm.get('proceso')!.touched">
+                            <option value="">Seleccione un proceso</option>
+                            <option value="Gestion general">Gestión General</option>
+                            <option value="Global">Global</option>
+                        </select>
+                        @if (indicatorForm.get('proceso')!.invalid && indicatorForm.get('proceso')!.touched) {
+                        <div class="invalid-feedback">
+                            Este campo es obligatorio.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Responsable -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="responsable">Responsable</label>
+                        <select id="responsable" formControlName="responsable" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('responsable')!.invalid && indicatorForm.get('responsable')!.touched">
+                            <option value="">Seleccione un responsable</option>
+                            <option value="Juan C">Juan C</option>
+                            <option value="Cesar Q">Cesar Q</option>
+                        </select>
+                        @if (indicatorForm.get('responsable')!.invalid && indicatorForm.get('responsable')!.touched) {
+                        <div class="invalid-feedback">
+                            Este campo es obligatorio.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Valor -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="valor">Valor (%)</label>
+                        <input type="number" id="valor" formControlName="valor" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('valor')!.invalid && indicatorForm.get('valor')!.touched" />
+                        @if (indicatorForm.get('valor')!.invalid && indicatorForm.get('valor')!.touched) {
+                        <div class="invalid-feedback">
+                            El valor es obligatorio y debe ser un número positivo.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Variación -->
+                <div class="item col-md-6">
+                    <div class="form-group">
+                        <label for="variacion">Variación (%)</label>
+                        <input type="number" id="variacion" formControlName="variacion" class="form-control"
+                            [class.is-invalid]="indicatorForm.get('variacion')!.invalid && indicatorForm.get('variacion')!.touched" />
+                        @if (indicatorForm.get('variacion')!.invalid && indicatorForm.get('variacion')!.touched) {
+                        <div class="invalid-feedback">
+                            La variación es obligatoria y debe ser un número positivo.
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="buttonBox">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="indicatorForm.invalid">Editar
+                    Indicador</button>
+                <button type="button" class="btn btn-danger btn-lg" (click)="cancel()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, query } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, getDoc, query, updateDoc } from '@angular/fire/firestore';
 import { Indicators } from '../models/indicators.model';
-import { Observable,from  } from 'rxjs';
+import { Observable,from, map  } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,23 @@ export class IndicatorsService {
   deleteIndicator(id: string): Observable<any> {
     const indicatorRef = doc(this.fireSotre, 'Indicadores', id);
     return from(deleteDoc(indicatorRef));
+  }
+
+  getIndicatorById(id: string): Observable<Indicators> {
+    const indicatorRef = doc(this.fireSotre, 'Indicadores', id);
+    return from(getDoc(indicatorRef)).pipe(
+      map((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          return { id: docSnapshot.id, ...docSnapshot.data() } as Indicators;
+        } else {
+          throw new Error('Indicador no encontrado');
+        }
+      })
+    );
+  }
+
+  updateIndicator(id: string, updatedData: Partial<Indicators>): Observable<any> {
+    const indicatorRef = doc(this.fireSotre, 'Indicadores', id);
+    return from(updateDoc(indicatorRef, updatedData));
   }
 }
