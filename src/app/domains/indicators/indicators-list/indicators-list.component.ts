@@ -46,8 +46,17 @@ export class IndicatorsListComponent {
 
   // Función para eliminar un indicador
   deleteIndicator(id: string) {
-    console.log('Eliminando indicador con ID:', id);
-    // Aquí puedes implementar la lógica para eliminar el indicador
+    this.spinnerService.showSpinner.update(() => true);
+    this.indicatorsService.deleteIndicator(id).subscribe({
+      next: (result) => {
+        this.toastr.success("Indicador eliminado con exito");
+        this.getIndicadores();    
+      },
+      error: (err) => {
+        this.toastr.error("Ocurrio un error al eliminar el indicador con id: "+id);
+        this.spinnerService.showSpinner.update(() => false);
+      }
+    });
   }
 
 }
